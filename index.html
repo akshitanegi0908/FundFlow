@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zeno - Gen Z Finance Advisor</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" defer src="firebase-init.js"></script>
+  <script type="module" defer src="script.js"></script>
+</head>
+<body class="bg-gradient-to-r from-purple-200 to-pink-100 min-h-screen font-sans text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center px-8 py-4 bg-white shadow-md sticky top-0 z-50">
+    <div class="text-2xl font-bold">FundFlow</div>
+    <div class="space-x-6">
+      <a href="#home" class="text-sm font-medium">Home</a>
+      <a href="#about" class="text-sm font-medium">About Us</a>
+      <a href="#services" class="text-sm font-medium">Our Services</a>
+      <button onclick="openModal()" class="bg-green-500 text-white px-4 py-2 rounded-full text-sm">Sign Up</button>
+      <button onclick="openLogin()" class="bg-purple-500 text-white px-4 py-2 rounded-full text-sm">Login</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="flex items-center justify-center h-screen bg-purple-100">
+    <div class="text-center p-6">
+      <h1 class="text-4xl font-bold mb-4">Welcome to FundFlow 💸</h1>
+      <p class="text-lg text-gray-700">Your AI-powered, values-first money buddy.</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="p-10 bg-white text-center">
+    <h2 class="text-3xl font-bold mb-4">About Us</h2>
+    <p class="text-gray-600 max-w-2xl mx-auto">FundFlow is a Gen Z wellness platform that uses AI, values alignment, and community gamification to make finance fun, smart, and emotional. We align what you care about with how you spend.</p>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="p-10 bg-purple-50 text-center">
+    <h2 class="text-3xl font-bold mb-6">Our Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div onclick="openValuesPopup()" class="glass p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform duration-300">
+        <h3 class="text-xl font-semibold mb-2">Values-Based Onboarding</h3>
+        <p class="text-sm">Select what matters most to you — Sustainability, Freedom, Community.</p>
+      </div>
+      <div class="glass p-6 rounded-xl">
+        <h3 class="text-xl font-semibold mb-2">AI Cashflow Predictor</h3>
+        <p class="text-sm">Smart forecasting of your income and spending aligned with your goals.</p>
+      </div>
+      <div class="glass p-6 rounded-xl">
+        <h3 class="text-xl font-semibold mb-2">Squad Challenges</h3>
+        <p class="text-sm">Pair with friends in quests like “No Buy Week” and earn XP together.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Cards Moving Round -->
+  <section class="overflow-hidden whitespace-nowrap py-10">
+    <div class="flex space-x-6 animate-scrollLoop w-max px-4">
+      <div class="glass-card">🌱 <strong>Values-Based Setup</strong><p>Start by choosing what you care about.</p></div>
+      <div class="glass-card">🔮 <strong>Cashflow Predictor</strong><p>Forecast income & spending smartly.</p></div>
+      <div class="glass-card">👯‍♀️ <strong>Squad Quests</strong><p>Fun financial challenges with friends.</p></div>
+      <div class="glass-card">💬 <strong>Maya Chatbot</strong><p>Your personal finance buddy.</p></div>
+      <div class="glass-card">🎭 <strong>Mood Tracker</strong><p>Log emotions linked to your spends.</p></div>
+      <div class="glass-card">🏆 <strong>XP System</strong><p>Earn rewards and levels.</p></div>
+      <div class="glass-card">📊 <strong>Peer Insights</strong><p>Compare with like-minded users.</p></div>
+      <div class="glass-card">📅 <strong>Smart Subscriptions</strong><p>Manage & track recurring expenses.</p></div>
+    </div>
+  </section>
+
+  <!-- Sign Up Modal -->
+  <div id="signupModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-30 z-50">
+    <div class="glass rounded-2xl p-8 max-w-md text-center bg-white">
+      <h1 class="text-2xl font-bold mb-2">Create your Zeno Account 💼</h1>
+      <form id="signupForm" class="space-y-4">
+        <input type="email" id="email" placeholder="Email" class="border rounded px-4 py-2 w-full" required />
+        <input type="password" id="password" placeholder="Password" class="border rounded px-4 py-2 w-full" required />
+        <button type="submit" class="bg-purple-600 text-white px-6 py-2 rounded-full w-full">Create Account</button>
+      </form>
+      <button onclick="closeModal()" class="mt-4 text-sm text-purple-700 underline">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-30 z-50">
+    <div class="glass rounded-2xl p-8 max-w-md text-center bg-white">
+      <h1 class="text-2xl font-bold mb-2">Welcome Back 👋</h1>
+      <form id="loginForm" class="space-y-4">
+        <input type="email" id="loginEmail" placeholder="Email" class="border rounded px-4 py-2 w-full" required />
+        <input type="password" id="loginPassword" placeholder="Password" class="border rounded px-4 py-2 w-full" required />
+        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-full w-full">Login</button>
+      </form>
+      <button onclick="closeLogin()" class="mt-4 text-sm text-green-700 underline">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Values Modal -->
+  <div id="valuesModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-40 z-50">
+    <div class="glass rounded-2xl p-8 max-w-md text-center bg-white">
+      <h2 class="text-xl font-bold mb-4">What's important to you?</h2>
+      <form id="valuesForm" class="space-y-4">
+        <label><input type="checkbox" name="values" value="Sustainability" class="mr-2" /> Sustainability</label><br />
+        <label><input type="checkbox" name="values" value="Freedom" class="mr-2" /> Freedom</label><br />
+        <label><input type="checkbox" name="values" value="Community" class="mr-2" /> Community</label><br />
+        <label><input type="checkbox" name="values" value="Innovation" class="mr-2" /> Innovation</label><br />
+        <label><input type="checkbox" name="values" value="Stability" class="mr-2" /> Stability</label><br />
+        <button type="submit" class="bg-purple-600 text-white px-6 py-2 rounded-full w-full">Save Values</button>
+      </form>
+      <button onclick="closeValuesPopup()" class="mt-4 text-sm text-purple-700 underline">Cancel</button>
+    </div>
+  </div>
+</body>
+</html>
