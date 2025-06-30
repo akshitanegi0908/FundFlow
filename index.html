@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FundFlow- Gen Z Finance Advisor</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" defer src="firebase-init.js"></script>
+  <script type="module" defer src="script.js"></script>
+</head>
+<body class="bg-gradient-to-r from-purple-200 to-pink-100 min-h-screen font-sans text-gray-800">
+
+  <!-- Navbar -->
+<nav class="flex justify-between items-center px-8 py-4 bg-white shadow-md sticky top-0 z-50">
+  <div class="text-2xl font-bold">FundFlow</div>
+  <div class="space-x-6">
+    <a href="#home" class="text-sm font-medium">Home</a>
+    <a href="#about" class="text-sm font-medium">About Us</a>
+    <a href="#features" class="text-sm font-medium">Explore</a>
+    <button onclick="openModal()" class="bg-green-500 text-white px-4 py-2 rounded-full text-sm">Sign Up</button>
+    <button onclick="openLogin()" class="bg-purple-500 text-white px-4 py-2 rounded-full text-sm">Login</button>
+  </div>
+</nav>
+
+
+  <!-- Hero Section -->
+  <section id="home" class="flex items-center justify-center h-screen bg-purple-100">
+    <div class="text-center p-6">
+      <h1 class="text-4xl font-bold mb-4">Welcome to FundFlow 💸</h1>
+      <p class="text-lg text-gray-700">Your AI-powered, values-first money buddy.</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="p-10 bg-white text-center">
+    <h2 class="text-3xl font-bold mb-4">About Us</h2>
+    <p class="text-gray-600 max-w-2xl mx-auto">FundFlow is a Gen Z wellness platform that uses AI, values alignment, and community gamification to make finance fun, smart, and emotional. We align what you care about with how you spend.</p>
+  </section>
+  <section id="features" class="...">
+  </section>
+
+<!-- Features Section -->
+<section id="features" class="py-10 text-center bg-gradient-to-br from-pink-100 to-purple-200">
+  <h2 class="text-3xl font-bold mb-6">Explore FundFlow Features</h2>
+  <div class="flex flex-wrap justify-center gap-6 px-4">
+    
+    <div onclick="openValuesPopup()" class="glass-card cursor-pointer hover:scale-105 transition-transform">
+      <h3 class="text-xl font-semibold">🌱 Values-Based Onboarding</h3>
+      <p class="text-sm mt-2">Select what matters to you – Sustainability, Freedom, and more.</p>
+    </div>
+
+   <div class="glass-card" onclick="openCashflowPopup()">
+  <h3 class="text-xl font-semibold">🔮 AI Cashflow Predictor</h3>
+  <p class="text-sm mt-2">Forecast your finances with intelligent models.</p>
+</div>
+
+   <div onclick="openSquadPopup()" class="glass-card">
+  <h3 class="text-xl font-semibold">👯‍♀️ Squad Challenges</h3>
+  <p class="text-sm mt-2">Team up for weekly finance quests and XP rewards.</p>
+</div>
+
+
+  <div onclick="openChatbotPopup()" class="glass-card">
+  <h3 class="text-xl font-semibold">💬 Maya Chatbot</h3>
+  <p class="text-sm mt-2">Your 24/7 finance coach and motivator.</p>
+</div>
+
+
+   <div onclick="openMoodPopup()" class="glass-card">
+  <h3 class="text-xl font-semibold">🎭 Mood Tracker</h3>
+  <p class="text-sm mt-2">Log how you feel when spending.</p>
+</div>
+
+
+ <div onclick="openXpPopup()" class="glass-card">
+  <h3 class="text-xl font-semibold">🏆 XP System</h3>
+  <p class="text-sm mt-2">Complete goals and level up your money game.</p>
+</div>
+
+
+<div onclick="openPeerPopup()" class="glass-card">
+  <h3 class="text-xl font-semibold">📊 Peer Insights</h3>
+  <p class="text-sm mt-2">See how your habits compare with others.</p>
+</div>
+
+
+  <div onclick="openSubsPopup()" class="glass-card">
+  <h3 class="text-xl font-semibold">📅 Smart Subscriptions</h3>
+  <p class="text-sm mt-2">Track and control recurring expenses.</p>
+</div>
+  </div>
+</section>
+
+  <!-- Sign Up Modal -->
+  <div id="signupModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-30 z-50">
+    <div class="glass rounded-2xl p-8 max-w-md text-center bg-white">
+      <h1 class="text-2xl font-bold mb-2">Create your Zeno Account 💼</h1>
+      <form id="signupForm" class="space-y-4">
+        <input type="email" id="email" placeholder="Email" class="border rounded px-4 py-2 w-full" required />
+        <input type="password" id="password" placeholder="Password" class="border rounded px-4 py-2 w-full" required />
+        <button type="submit" class="bg-purple-600 text-white px-6 py-2 rounded-full w-full">Create Account</button>
+      </form>
+      <button onclick="closeModal()" class="mt-4 text-sm text-purple-700 underline">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-30 z-50">
+    <div class="glass rounded-2xl p-8 max-w-md text-center bg-white">
+      <h1 class="text-2xl font-bold mb-2">Welcome Back 👋</h1>
+      <form id="loginForm" class="space-y-4">
+        <input type="email" id="loginEmail" placeholder="Email" class="border rounded px-4 py-2 w-full" required />
+        <input type="password" id="loginPassword" placeholder="Password" class="border rounded px-4 py-2 w-full" required />
+        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-full w-full">Login</button>
+      </form>
+      <button onclick="closeLogin()" class="mt-4 text-sm text-green-700 underline">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Values Modal -->
+  <div id="valuesModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-40 z-50">
+    <div class="glass rounded-2xl p-8 max-w-md text-center bg-white">
+      <h2 class="text-xl font-bold mb-4">What's important to you?</h2>
+      <form id="valuesForm" class="space-y-4">
+        <label><input type="checkbox" name="values" value="Sustainability" class="mr-2" /> Sustainability</label><br />
+        <label><input type="checkbox" name="values" value="Freedom" class="mr-2" /> Freedom</label><br />
+        <label><input type="checkbox" name="values" value="Community" class="mr-2" /> Community</label><br />
+        <label><input type="checkbox" name="values" value="Innovation" class="mr-2" /> Innovation</label><br />
+        <label><input type="checkbox" name="values" value="Stability" class="mr-2" /> Stability</label><br />
+        <button type="submit" class="bg-purple-600 text-white px-6 py-2 rounded-full w-full">Save Values</button>
+      </form>
+      <button onclick="closeValuesPopup()" class="mt-4 text-sm text-purple-700 underline">Cancel</button>
+    </div>
+  </div>
+  <!-- Cashflow Predictor Modal -->
+<div id="cashflowModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-30 z-50">
+  <div class="glass rounded-2xl p-8 max-w-md w-full text-center bg-white">
+    <h2 class="text-2xl font-bold mb-4">🔮 AI Cashflow Predictor</h2>
+    <form id="cashflowForm" class="space-y-4">
+      <input type="number" id="income" placeholder="Enter Monthly Income" class="border rounded px-4 py-2 w-full" required />
+      <input type="number" id="expenses" placeholder="Enter Total Recurring Expenses" class="border rounded px-4 py-2 w-full" required />
+      <button type="submit" class="bg-purple-600 text-white px-6 py-2 rounded-full w-full">Predict</button>
+    </form>
+    <div id="predictionResult" class="mt-4 text-sm text-gray-700 font-medium hidden"></div>
+    <button onclick="closeCashflowPopup()" class="mt-4 text-sm text-purple-700 underline">Cancel</button>
+  </div>
+</div>
+<!-- Squad Challenges Modal -->
+<div id="squadModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-40 z-50">
+  <div class="glass rounded-2xl p-8 max-w-md w-full text-center bg-white">
+    <h2 class="text-2xl font-bold mb-4">👯‍♀️ Squad Challenge</h2>
+    <form id="squadForm" class="space-y-4">
+      <input type="text" id="friendName" placeholder="Enter friend’s name" class="border rounded px-4 py-2 w-full" required />
+      <select id="challenge" class="border rounded px-4 py-2 w-full">
+        <option>No Buy Week</option>
+        <option>Save ₹500 This Week</option>
+        <option>Cook at Home 3 Days</option>
+        <option>Reduce Subscriptions</option>
+        <option>Track Mood for 7 Days</option>
+        <option>Spend ₹1000 on Essentials Only</option>
+        <option>Complete 3 Finance Quests</option>
+        <option>Share 3 Money Tips</option>
+
+      </select>
+      <button type="submit" class="bg-purple-600 text-white px-6 py-2 rounded-full w-full">Invite Friend</button>
+    </form>
+    <button onclick="closeSquadPopup()" class="mt-4 text-sm text-purple-700 underline">Cancel</button>
+  </div>
+</div>
+<!-- Maya Chatbot Modal -->
+<div id="chatbotModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-30 z-50">
+  <div class="glass rounded-2xl p-6 w-full max-w-md bg-white text-left">
+    <h2 class="text-xl font-bold mb-4">💬 Maya Chatbot</h2>
+    <div id="chatWindow" class="border rounded p-4 h-64 overflow-y-auto bg-gray-50 mb-4 text-sm">
+      <p><strong>Maya:</strong> Hey there! How can I help with your finances today?</p>
+    </div>
+    <form id="chatForm" class="flex gap-2">
+      <input type="text" id="userMessage" class="border rounded px-4 py-2 w-full" placeholder="Ask me anything..." required />
+      <button type="submit" class="bg-purple-600 text-white px-4 py-2 rounded">Send</button>
+    </form>
+    <button onclick="closeChatbotPopup()" class="mt-4 text-sm text-purple-700 underline block mx-auto">Close</button>
+  </div>
+</div>
+<!-- Mood Tracker Modal -->
+<div id="moodModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-40 z-50">
+  <div class="glass rounded-2xl p-8 max-w-md text-center bg-white">
+    <h2 class="text-xl font-bold mb-4">🎭 How do you feel after spending?</h2>
+    <form id="moodForm" class="space-y-4">
+      <div class="flex justify-center space-x-4 text-3xl">
+        <label><input type="radio" name="mood" value="😊" required> 😊</label>
+        <label><input type="radio" name="mood" value="😐"> 😐</label>
+        <label><input type="radio" name="mood" value="😟"> 😟</label>
+      </div>
+      <button type="submit" class="bg-purple-600 text-white px-6 py-2 rounded-full w-full">Submit</button>
+    </form>
+    <button onclick="closeMoodPopup()" class="mt-4 text-sm text-purple-700 underline">Cancel</button>
+  </div>
+</div>
+<!-- XP System Modal -->
+<div id="xpModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-40 z-50">
+  <div class="glass rounded-2xl p-8 max-w-md text-center bg-white w-full">
+    <h2 class="text-2xl font-bold mb-4">🏆 Your XP Progress</h2>
+    <div class="text-left mb-4">
+      <p class="text-lg font-semibold">Level: <span id="xpLevel">3</span></p>
+      <div class="w-full bg-gray-200 rounded-full h-4 mt-2">
+        <div id="xpBar" class="bg-purple-500 h-4 rounded-full" style="width: 60%;"></div>
+      </div>
+      <p class="mt-2 text-sm text-gray-600">XP: <span id="xpPoints">120</span> / 200</p>
+    </div>
+    <button onclick="closeXpPopup()" class="mt-4 text-sm text-purple-700 underline">Close</button>
+  </div>
+</div>
+<!-- Peer Insights Modal -->
+<div id="peerModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-40 z-50">
+  <div class="glass rounded-2xl p-8 max-w-md text-center bg-white w-full">
+    <h2 class="text-2xl font-bold mb-4">📊 Peer Insights</h2>
+    <ul class="text-left space-y-2 text-sm font-medium text-gray-700">
+      <li>✅ You’re in the <strong>top 5%</strong> for reducing food delivery spends 🍔</li>
+      <li>✅ You’ve spent <strong>30% less</strong> on subscriptions than average 💻</li>
+      <li>✅ You’re saving <strong>more than 80%</strong> of users in your age group 💰</li>
+    </ul>
+    <button onclick="closePeerPopup()" class="mt-6 text-sm text-purple-700 underline">Close</button>
+  </div>
+</div>
+<!-- Smart Subscriptions Modal -->
+<div id="subsModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-40 z-50">
+  <div class="glass rounded-2xl p-8 max-w-md w-full text-center bg-white">
+    <h2 class="text-2xl font-bold mb-4">📅 Smart Subscriptions</h2>
+    <form id="subsForm" class="space-y-4">
+      <input type="text" id="serviceName" placeholder="Service Name (e.g., Netflix)" class="border rounded px-4 py-2 w-full" required />
+      <input type="number" id="serviceCost" placeholder="Monthly Cost (₹)" class="border rounded px-4 py-2 w-full" required />
+      <button type="submit" class="bg-purple-600 text-white px-6 py-2 rounded-full w-full">Add Subscription</button>
+    </form>
+    <div id="subsList" class="mt-4 text-left text-sm text-gray-700"></div>
+    <button onclick="closeSubsPopup()" class="mt-6 text-sm text-purple-700 underline">Close</button>
+  </div>
+</div>
+
+</body>
+</html>
